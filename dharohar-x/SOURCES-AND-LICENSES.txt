@@ -1,0 +1,61 @@
+DHAROHAR X — IMAGE SOURCES / LICENSING NOTES
+
+Visual reference: user-provided Dharohar X design references (two rounds).
+
+AI-generated project artwork:
+- public/assets/hero/taj-hero-ai.jpg — AI-generated Taj Mahal composition used
+  as a homepage presentation asset. Not documentary evidence of architectural
+  detail.
+
+Project-local, bundled assets (always shipped with the site):
+- public/assets/brand/*
+- public/assets/hero/*  (Taj Mahal, Qutub Minar, Hampi, Konark — original photography)
+- public/assets/ar/*    (Jagannath, Konark, Lingaraj, Mukteshwar, Raja Rani thumbnails)
+- public/models-glb/*.glb — optimised (welded, simplified, WebP-textured) versions
+  of the original FBX temple scans, rebuilt for fast web + mobile WebXR delivery.
+  Original, unmodified FBX captures are kept outside the deployed bundle in
+  /archive-source-models/models-fbx-originals for reference and re-export.
+
+Wikimedia Commons imagery (fetched locally via `npm run fetch-images`,
+see scripts/image-manifest.mjs for the authoritative list):
+These files are downloaded and bundled locally, so the pages do not depend on live Wikimedia redirects to display them. The downloader can refresh them. Check the linked Commons file page for current license and attribution details.
+
+  Subject              File (on Wikimedia Commons)                          License
+  -------------------  ---------------------------------------------------  ------------------
+  Amer Fort            Amber fort jaipur.jpg                                CC BY-SA 3.0
+  Kathak                Kathak dance (10).jpg                               CC BY-SA 4.0
+  Bharatanatyam         Bharata Natyam Performance DS.jpg                   CC BY-SA 3.0
+  Odissi                Odissi Dance Form.jpg                               CC BY-SA 4.0
+  Kathakali              Kathakali All Characters.jpg                       CC BY-SA 4.0
+  Chhau                 Chhau dance.jpg                                     CC BY-SA 4.0
+  Banarasi Weaving       Alkama Ansari - A Banarasi Saree Weaver.jpg        CC BY-SA (verify exact tag before commercial use)
+  Diwali                Diwali celebration India.jpg                        CC BY-SA 4.0
+  Garba                 Garba Navratri 02.jpg                               CC BY-SA 4.0
+  Pattachitra            Pattachitra artist at work in Odisha, India.jpg    CC BY-SA 4.0
+  Holi                  HOLI, a festival of colours in the city of joy.JPG  CC BY-SA 4.0
+  Durga Puja             Durga Puja 2018 Kolkata.jpg                        CC BY-SA 4.0
+  Blue Pottery            Blue Pottery Making Process.jpg                   CC BY-SA 4.0
+
+  Full file history/author/license details are on each file's Commons page,
+  e.g. https://commons.wikimedia.org/wiki/File:<name>
+
+Note on this refinement: several images in an earlier draft of this project
+were mismatched to the wrong subject (an Ajrak-craft photo was reused for
+both Banarasi Weaving and Pattachitra; a Diwali photo was reused for Garba).
+Every tradition above now has its own distinct, subject-matched photograph.
+
+Map & tiles:
+- Interactive map (/map) uses Leaflet with standard OpenStreetMap raster
+  tiles, © OpenStreetMap contributors. Attribution is shown on the map
+  itself, as required by the OSM tile usage policy.
+
+Type:
+- Cormorant Garamond and Manrope, both bundled locally via @fontsource /
+  @fontsource-variable (SIL Open Font License), no external font requests.
+
+Important: confirm each file's current license and required attribution
+line before public/commercial deployment — Commons contributors occasionally
+relicense or remove files, and CC BY-SA requires attribution + share-alike
+for any modified redistribution.
+
+Additional local images are bundled for Golden Temple, Meenakshi Temple, Victoria Memorial, Ram Mandir, Mysore Palace, Chhau Mask, Rajasthani Kavad and Kathputli. Their source file and license details are listed in scripts/image-manifest.mjs.

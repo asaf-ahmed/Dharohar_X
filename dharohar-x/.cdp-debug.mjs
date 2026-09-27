@@ -1,0 +1,12 @@
+const WebSocket = (await import('ws')).default;
+const targets = await (await fetch('http://127.0.0.1:9446/json')).json();
+console.log('TARGETS',targets.filter(x=>x.type==='page').map(x=>x.url));
+const page=targets.find(x=>x.type==='page'&&x.url.includes('/explore'));
+const ws=new WebSocket(page.webSocketDebuggerUrl,{origin:'http://localhost'});
+await new Promise((resolve,reject)=>{ws.once('open',resolve);ws.once('error',reject)});
+let id=0;const pending=new Map();const errors=[];
+ws.on('message',data=>{const m=JSON.parse(data);if(m.method==='Runtime.exceptionThrown')errors.push(m.params.exceptionDetails.exception?.description||m.params.exceptionDetails.text);if(m.method==='Log.entryAdded')errors.push(m.params.entry.text);if(m.id&&pending.has(m.id)){pending.get(m.id)(m);pending.delete(m.id)}});
+const send=(method,params={})=>new Promise(resolve=>{const commandId=++id;pending.set(commandId,resolve);ws.send(JSON.stringify({id:commandId,method,params}))});
+await send('Runtime.enable');await send('Log.enable');await send('Page.enable');await send('Page.reload',{ignoreCache:true});await new Promise(r=>setTimeout(r,3000));
+const result=await send('Runtime.evaluate',{expression:"JSON.stringify({root:document.querySelector('#root')?.innerHTML.slice(0,700),text:document.body.innerText.slice(0,300)})",returnByValue:true});
+console.log('DOM',result.result?.result?.value);console.log('ERRORS',JSON.stringify(errors));ws.close();

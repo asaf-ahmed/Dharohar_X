@@ -1,0 +1,175 @@
+/* ============================================================
+   DHAROHAR X — Design tokens
+   Palette grounded in Indian heritage materials: deep indigo
+   night sky, sandstone clay, temple gold, banyan sage — set
+   against a warm paper base so photography stays the hero.
+   ============================================================ */
+
+@font-face {
+  font-family: 'Runtime';
+  src: url('/fonts/RuntimeRegular-m2Odx.otf') format('opentype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* --- core palette (name: role) --- */
+  --ink: #0f2a3d;          /* headings, primary text */
+  --ink-soft: #33566d;     /* secondary text on light */
+  --indigo: #2452b8;       /* primary accent — CTAs, links, active states */
+  --indigo-deep: #16346f;  /* indigo hover / pressed */
+  --clay: #b1592f;         /* secondary accent — tags, craft, warmth */
+  --clay-soft: #d97f4f;
+  --gold: #b8862f;         /* tertiary accent — fine dividers, stars, ratings */
+  --sage: #55735a;         /* quaternary accent — preservation / nature */
+
+  /* --- neutrals & washes --- */
+  --paper: #fbf8f2;        /* base page background, warm white */
+  --paper-raised: #ffffff; /* card surfaces */
+  --mist: #eef3fa;         /* cool pastel section wash */
+  --sand: #f7ece1;         /* warm pastel section wash */
+  --moss: #eaf1ea;         /* green pastel section wash */
+  --line: #e4ddcd;         /* hairline borders on paper */
+  --line-cool: #dbe3ee;    /* hairline borders on mist */
+  --muted: #6b7a84;        /* tertiary / caption text */
+
+  /* --- dark surfaces (nav-inverse sections, footer top) --- */
+  --night: #0a1e30;
+  --night-soft: #12324a;
+
+  /* --- shadow & radius --- */
+  --shadow-sm: 0 1px 2px rgba(15,42,61,.06), 0 1px 1px rgba(15,42,61,.04);
+  --shadow-md: 0 10px 30px rgba(15,42,61,.10), 0 2px 8px rgba(15,42,61,.05);
+  --shadow-lg: 0 24px 60px rgba(10,30,48,.18);
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 22px;
+  --r-pill: 999px;
+
+  /* --- type scale (major third-ish, tuned) --- */
+  --step-6: clamp(2.6rem, 2rem + 2.6vw, 4.4rem);
+  --step-5: clamp(2.1rem, 1.7rem + 1.8vw, 3.2rem);
+  --step-4: clamp(1.7rem, 1.5rem + 1vw, 2.4rem);
+  --step-3: clamp(1.35rem, 1.2rem + .6vw, 1.7rem);
+  --step-2: 1.15rem;
+  --step-1: 1rem;
+  --step-0: .9375rem;
+  --step--1: .8125rem;
+
+  --font-display: 'Runtime', sans-serif;
+  --font-body: 'Runtime', sans-serif;
+
+  --shell: min(1280px, 92vw);
+  --ease: cubic-bezier(.4,0,.2,1);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { background: var(--paper); }
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body .explorePage,
+body .explorePage * {
+  font-family: var(--font-body);
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button, input, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  font-weight: 600;
+  line-height: 1.08;
+  margin: 0 0 .5rem;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: var(--step-6); }
+h2 { font-size: var(--step-5); }
+h3 { font-size: var(--step-4); }
+p { margin: 0 0 1rem; color: var(--ink-soft); }
+
+::selection { background: var(--indigo); color: #fff; }
+
+:focus-visible {
+  outline: 2.5px solid var(--indigo);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.shell { width: var(--shell); margin: 0 auto; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: .78rem;
+  letter-spacing: .06em;
+  color: var(--indigo);
+  margin-bottom: .85rem;
+}
+.eyebrow::before {
+  content: '';
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+.eyebrow.onDark { color: var(--gold); }
+.eyebrow.clay { color: var(--clay); }
+.eyebrow.sage { color: var(--sage); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .85rem 1.5rem;
+  background: var(--indigo);
+  color: #fff;
+  border: none;
+  border-radius: var(--r-pill);
+  font-weight: 700;
+  font-size: .95rem;
+  box-shadow: var(--shadow-sm);
+  transition: background .2s var(--ease), transform .2s var(--ease), box-shadow .2s var(--ease);
+  white-space: nowrap;
+}
+.btn:hover { background: var(--indigo-deep); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.btn:active { transform: translateY(0); }
+.btn.light {
+  background: rgba(255,255,255,.14);
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,.55);
+  backdrop-filter: blur(6px);
+}
+.btn.light:hover { background: rgba(255,255,255,.26); }
+.btn.outline {
+  background: transparent;
+  color: var(--indigo);
+  border: 1.5px solid var(--indigo);
+  box-shadow: none;
+}
+.btn.outline:hover { background: var(--indigo); color: #fff; }
+.btn.clay { background: var(--clay); }
+.btn.clay:hover { background: #954a26; }
+.btn svg { flex: none; transition: transform .2s var(--ease); }
+.btn:hover svg { transform: translateX(3px); }

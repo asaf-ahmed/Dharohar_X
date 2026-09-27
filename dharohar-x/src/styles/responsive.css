@@ -1,0 +1,24 @@
+@media (max-width: 760px) {
+  .section { padding: 3.5rem 0; }
+  .sectionCompact { padding: 1.6rem 0; }
+  .sectionTitle { margin-bottom: 1.6rem; }
+  .facts { grid-template-columns: 1fr; }
+  .cultureIntro { flex-direction: column; align-items: flex-start; }
+  .cultureStat { text-align: left; }
+  .preserveInner { padding: 3.2rem 0; }
+  .pageHero { padding: 6.2rem 0 3rem; }
+  .pageHero.pageHeroTall { min-height: 24rem; padding: 8rem 0 4.5rem; }
+  blockquote { font-size: 1.05rem; padding: 1.2rem 1.4rem; }
+  .cultureCallout { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 460px) {
+  :root { --shell: 90vw; }
+  .heroContent p { font-size: 1rem; }
+  .pageHero.pageHeroTall { min-height: 21rem; padding: 7rem 0 3.5rem; }
+  h2 { font-size: 1.85rem; }
+}
+
+/* prevent horizontal scroll from any wide element */
+html, body { overflow-x: hidden; }
+img, video { max-width: 100%; }
